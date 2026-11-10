@@ -1,0 +1,10 @@
+f5-tts==1.1.9
+cached-path==1.7.3
+librosa==0.10.2.post1
+transformers==4.46.3
+vocos==0.1.0
+pydub==0.25.1
+gradio==5.29.0
+x-transformers==1.42.11
+torch==2.5.1
+torchaudio==2.5.1

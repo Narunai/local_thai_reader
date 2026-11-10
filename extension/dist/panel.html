@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>เล่านิยาย</title><link rel="stylesheet" href="panel.css"></head>
+<body>
+  <main>
+    <header><div class="brand-icon" aria-hidden="true">น</div><div><h1>เล่านิยาย<span>LOCAL READER</span></h1><p>เรื่องราวของคุณ เสียงบนเครื่องคุณ</p></div><button id="settings-toggle" class="icon-button" title="ตั้งค่า" aria-label="ตั้งค่า">⚙</button></header>
+    <div id="connection" class="connection"><i></i><span id="connection-text">กำลังตรวจระบบเสียง</span><button id="connect">ตรวจอีกครั้ง</button></div>
+    <section class="intro"><span class="eyebrow">เปิดหนังสือ แล้วปล่อยใจฟัง</span><h2>ให้ทุกตัวอักษร<br>มีเสียงเล่า</h2><p>อ่านนิยายจากหน้าที่เปิดอยู่<br>ด้วยเสียงภาษาไทยในคอมพิวเตอร์ของคุณ</p><div class="book-art" aria-hidden="true"><div>กาลครั้งหนึ่ง<br>ในดินแดน<br>แห่งเรื่องเล่า</div><div>เสียงลมพัด<br>ผ่านหน้ากระดาษ<br>อย่างแผ่วเบา</div></div></section>
+    <div class="load-actions"><button id="load" class="primary">▶ &nbsp; อ่านบทนี้</button><button id="selection" class="secondary">อ่านข้อความที่เลือก</button></div>
+    <section class="reader" aria-label="เครื่องเล่นนิยาย">
+      <div class="reader-heading"><span class="eyebrow">กำลังเปิดอ่าน</span><span id="chapter-label">ยังไม่ได้เลือกบท</span><button id="clear-chapter" class="clear-chapter" type="button" disabled>ยกเลิกเรื่องนี้</button></div>
+      <h3 id="chapter-title">เรื่องต่อไป เริ่มที่นี่</h3>
+      <p id="status" role="status">เปิดหน้านิยายแล้วกด “อ่านบทนี้”</p>
+      <p id="bgm-status" class="bgm-status">♪ เพลงคลอ: พร้อมเปลี่ยนตามอารมณ์เรื่อง</p>
+      <div class="current-text" id="current-text">ข้อความที่กำลังอ่านจะปรากฏตรงนี้</div>
+      <div class="progress-track"><div id="progress"></div></div><div class="progress-label"><span id="progress-text">พร้อมเมื่อคุณพร้อม</span><span id="rate-label">1.00×</span></div>
+      <div class="transport"><button id="previous" title="ช่วงก่อนหน้า" aria-label="ช่วงก่อนหน้า">⏮</button><button id="play" class="play" aria-label="เล่นหรือพัก">▶</button><button id="next" title="ช่วงถัดไป" aria-label="ช่วงถัดไป">⏭</button><button id="stop" title="หยุด" aria-label="หยุด">■</button></div>
+      <label class="field-label" for="paragraph">เริ่มจากย่อหน้า</label><div class="paragraph-row"><select id="paragraph" aria-label="เลือกย่อหน้า"><option value="0">ยังไม่มีเนื้อหา</option></select><button id="seek">ไป</button></div>
+    </section>
+    <section class="preferences">
+      <label class="field-label" for="voice">เสียงผู้เล่า</label><select id="voice"><option value="vachana:th_f_1">Vachana · ผู้หญิง 1</option><option value="vachana:th_f_2">Vachana · ผู้หญิง 2</option></select>
+      <div class="slider-label"><label for="rate">ความเร็ว</label><output id="rate-value">1.00×</output></div><input id="rate" type="range" min="0.75" max="1.5" step="0.05" value="1">
+      <div class="slider-label"><label for="volume">ระดับเสียงพูด</label><output id="volume-value">100%</output></div><input id="volume" type="range" min="0" max="1" step="0.05" value="1">
+      <label class="toggle"><span>เพลงคลอพื้นหลังตามบริบทและอารมณ์</span><input id="bgm-enabled" type="checkbox" checked><span class="switch"></span></label>
+      <div class="slider-label"><label for="bgm-volume">ความดังเพลงคลอพื้นหลัง</label><output id="bgm-volume-value">20%</output></div><input id="bgm-volume" type="range" min="0" max="1" step="0.02" value="0.2">
+      <label class="toggle"><span>อ่านตอนถัดไปอัตโนมัติ</span><input id="auto-next" type="checkbox" checked><span class="switch"></span></label>
+      <label class="toggle"><span>เลื่อนหน้าตามเสียงอ่าน</span><input id="auto-scroll" type="checkbox" checked><span class="switch"></span></label>
+    </section>
+    <section id="settings" class="settings" hidden>
+      <h3>เชื่อมต่อเสียงบนเครื่อง</h3><p>เปิด <code>local-tts/start.ps1</code> แล้วคัดลอก Token จากไฟล์ <code>local-tts/.token</code> มาใส่ด้านล่าง</p>
+      <label class="field-label" for="token">Token</label><input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="วาง Token ที่นี่">
+      <label class="field-label" for="dictionary-word">เพิ่มคำอ่านเฉพาะ</label>
+      <div class="dictionary-entry">
+        <label>คำในนิยาย<input id="dictionary-word" type="text" placeholder="เช่น ลอเอล" autocomplete="off"></label>
+        <label>ให้อ่านว่า<input id="dictionary-reading" type="text" placeholder="เช่น ลอ เอล" autocomplete="off"></label>
+        <button id="dictionary-add" class="secondary" type="button">เพิ่มคำ</button>
+      </div>
+      <p id="dictionary-feedback" class="dictionary-feedback" role="status" hidden></p>
+      <label class="field-label" for="dictionary">รายการคำอ่าน · แก้ไขหรือเพิ่มได้โดยตรง</label>
+      <textarea id="dictionary" rows="5" aria-describedby="dictionary-hint" placeholder="พิมพ์คำในนิยาย=คำอ่าน ที่นี่" spellcheck="false"></textarea>
+      <p id="dictionary-hint" class="dictionary-hint">ใช้รูปแบบ ลอเอล=ลอ เอล หนึ่งคำต่อบรรทัด กด Enter เพื่อขึ้นบรรทัดใหม่ แล้วกด “บันทึกและเชื่อมต่อ”</p>
+      <div class="gemini-settings">
+        <h3>Gemini ช่วยเตรียมคำอ่าน</h3>
+        <label class="toggle"><span>ใช้ Gemini ก่อนสร้างเสียง</span><input id="gemini-enabled" type="checkbox"><span class="switch"></span></label>
+        <p>เมื่อเปิดใช้ จะแบ่งข้อความทั้งหน้าเป็นชุดใหญ่ ส่งไป Google ไม่เกิน 3–4 ชุดต่อหน้า โดยส่งเมื่อใกล้อ่านถึงและเก็บคำอ่านไว้ใช้ซ้ำ ข้อความสั้นส่งครั้งเดียว ต้องใช้อินเทอร์เน็ตและอาจมีค่าใช้จ่ายตามบัญชี API เสียงยังสร้างในเครื่อง คำอ่านที่คุณกำหนดเองมีความสำคัญสูงสุด รับ API key ได้จาก <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a></p>
+        <label class="field-label" for="gemini-batches">แบ่งส่ง Gemini ต่อหน้า</label>
+        <select id="gemini-batches"><option value="4">4 ชุดใหญ่ต่อหน้า</option><option value="3">3 ชุดใหญ่ต่อหน้า</option></select>
+        <label class="field-label" for="gemini-model">ชื่อโมเดล Gemini</label>
+        <input id="gemini-model" type="text" value="gemini-3.5-flash-lite" spellcheck="false" autocomplete="off">
+        <label class="field-label" for="gemini-key">Gemini API key · คนละรหัสกับ Token ด้านบน</label>
+        <input id="gemini-key" type="password" placeholder="วาง API key จาก Google AI Studio" autocomplete="off" spellcheck="false" aria-describedby="gemini-key-status">
+        <p id="gemini-key-status" role="status">API key เก็บที่ Local Server · เว้นช่องว่างเพื่อใช้รหัสที่บันทึกไว้</p>
+        <div class="gemini-actions"><button id="gemini-test" type="button" class="secondary">ทดสอบคำอ่าน</button><button id="gemini-clear" type="button" class="secondary">ลบ API key</button></div>
+        <p id="gemini-result" role="status" hidden></p>
+        <p>หาก API ขัดข้อง ระบบจะหยุดและแจ้งสาเหตุ ปิดสวิตช์แล้วบันทึกเพื่อกลับมาอ่านในเครื่องทั้งหมด</p>
+      </div>
+      <button id="save" class="primary">บันทึกและเชื่อมต่อ</button>
+    </section>
+    <div id="error" class="error" role="alert" hidden></div>
+    <footer><span class="privacy-dot"></span> <span id="privacy-text">สร้างเสียงในเครื่อง · Gemini ปิดอยู่</span></footer>
+  </main><script defer src="panel.js"></script>
+</body></html>

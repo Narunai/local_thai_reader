@@ -1,0 +1,33 @@
+**/node_modules/
+**/.venv/
+**/.venv-omni/
+**/__pycache__/
+**/.pytest_cache/
+**/.token*
+**/.gemini*
+**/.env
+**/.env.*
+!**/.env.example
+*.pem
+*.key
+*.p12
+*.log
+local-tts/.token
+local-tts/.gemini.json
+local-tts/.gemini.tmp
+local-tts/models/*
+!local-tts/models/.gitkeep
+local-tts/voices/*.wav
+local-tts/voices/reference.json
+local-tts/cache/*
+!local-tts/cache/.gitkeep
+local-tts/vendor/
+local-tts/.tmp/
+local-tts/reports/
+local-tts/bgm/
+extension/reports/
+# Built extension/dist is included for Load unpacked without a Node build.
+# public is mirrored during build; only its source manifest belongs in Git.
+extension/public/*
+!extension/public/manifest.json
+local-tts/*.log

@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "เล่านิยาย · Local Thai Reader",
+  "description": "ฟังนิยายไทยด้วยโมเดลเสียงในคอมพิวเตอร์ของคุณ",
+  "version": "1.0.5",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel",
+    "offscreen"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "https://og-thai.blogspot.com/*",
+    "https://www.nekopost.net/*",
+    "https://nekopost.net/*"
+  ],
+  "background": {
+    "service_worker": "dist/reader-background.js"
+  },
+  "action": {
+    "default_title": "เปิดเล่านิยาย"
+  },
+  "side_panel": {
+    "default_path": "dist/panel.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://127.0.0.1:8765; media-src 'self' blob:; style-src 'self'"
+  }
+}

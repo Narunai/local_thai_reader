@@ -1,0 +1,11 @@
+# Runtime is isolated from F5's transformers and PyTorch versions.
+transformers==5.3.0
+accelerate==1.13.0
+numpy==2.2.6
+pythainlp==5.1.2
+soundfile==0.13.1
+librosa==0.11.0
+pydub==0.25.1
+gradio==6.31.0
+tensorboardX==2.6.4
+webdataset==1.0.2

@@ -1,0 +1,22 @@
+{
+  "name": "novel-local-reader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc --noEmit && node build.mjs",
+    "test": "vitest run",
+    "test:manifest": "node tests/manifest-e2e.mjs",
+    "test:chrome-action": "node tests/chrome-action-e2e.mjs",
+    "test:bootstrap": "node tests/chrome-action-e2e.mjs --broken-runtime",
+    "dev": "node build.mjs --watch"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.319",
+    "esbuild": "0.25.12",
+    "jsdom": "26.1.0",
+    "playwright": "1.58.2",
+    "typescript": "5.8.3",
+    "vitest": "4.1.12"
+  }
+}
